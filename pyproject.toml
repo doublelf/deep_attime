@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "de3d"
+version = "0.1.0"
+description = "Monocular metric 3D cuboid extraction for the ReComputer RK3576"
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.0",
+    "torchvision>=0.15",
+    "ultralytics>=8.3",
+    "onnxruntime>=1.17",
+    "onnx>=1.15",
+    "opencv-contrib-python>=4.8",
+    "numpy>=1.24",
+    "PyYAML>=6.0",
+    "requests>=2.31",
+]
+
+[project.scripts]
+de3d = "de3d.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

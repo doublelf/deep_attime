@@ -1,0 +1,31 @@
+# Runtime dependencies -- all of them are already present in the environment
+# this project was developed in.  They are listed here for reference only;
+# `pip install` is NOT required (and currently fails behind the network
+# policy of this machine).
+#
+#   torch            2.12.1+cpu   (detector backend)
+#   torchvision      0.27.1
+#   ultralytics      8.4.89       (YOLO11n detector)
+#   onnxruntime      1.23.2       (Depth-Anything V2 small)
+#   onnx             1.23.2
+#   onnxsim          0.7.3
+#   opencv-contrib   5.0.0.93     (ximgproc.guidedFilter)
+#   numpy            2.2.6
+#   scipy            1.15.3
+#   matplotlib       3.10.9
+#   PyYAML
+#   requests
+#
+# Optional: pytest, ruff (development only)
+torch>=2.0
+torchvision>=0.15
+ultralytics>=8.3
+onnxruntime>=1.17
+onnx>=1.15
+onnxsim>=0.4
+opencv-contrib-python>=4.8
+numpy>=1.24
+scipy>=1.10
+matplotlib>=3.7
+PyYAML>=6.0
+requests>=2.31

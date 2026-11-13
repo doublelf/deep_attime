@@ -1,0 +1,17 @@
+# model weights
+models/
+*.onnx
+*.pt
+*.rknn
+
+# outputs
+outputs/
+*.mp4
+*.json
+
+# python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/

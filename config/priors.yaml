@@ -1,0 +1,152 @@
+# Per-class 3D priors used to turn a 2D detection into a metric cuboid.
+#
+# dims      : [width, height, length] in metres (Omni3D convention)
+# height    : real-world height in metres, used by the "prior" depth estimator
+#             (Z = f * height / pixel_height)
+# grounded  : true  -> the object rests on the ground, the depth is sampled
+#                       from the lower part of the 2D box
+#             false -> the object is suspended (ball, backpack, ...), the depth
+#                       is sampled from the centre of the 2D box
+# weight    : prior weight used by the subject scorer (higher = more likely to
+#             be the main subject of the frame)
+#
+# Values are rough population averages; they are the dominant source of the
+# residual size error (10-20%).
+
+default:
+  dims: [0.60, 0.60, 0.60]
+  height: 0.60
+  grounded: false
+  weight: 0.1
+
+classes:
+  person:
+    dims: [0.60, 1.70, 0.40]
+    height: 1.70
+    grounded: true
+    weight: 1.0
+  bicycle:
+    dims: [0.65, 1.70, 1.80]
+    height: 1.70
+    grounded: true
+    weight: 0.7
+  car:
+    dims: [1.85, 1.50, 4.60]
+    height: 1.50
+    grounded: true
+    weight: 0.8
+  motorcycle:
+    dims: [0.70, 1.70, 2.10]
+    height: 1.70
+    grounded: true
+    weight: 0.7
+  bus:
+    dims: [2.55, 3.20, 11.00]
+    height: 3.20
+    grounded: true
+    weight: 0.8
+  truck:
+    dims: [2.50, 3.60, 8.00]
+    height: 3.60
+    grounded: true
+    weight: 0.8
+  sports ball:
+    dims: [0.22, 0.22, 0.22]
+    height: 0.22
+    grounded: false
+    weight: 0.2
+  backpack:
+    dims: [0.35, 0.50, 0.25]
+    height: 0.50
+    grounded: false
+    weight: 0.3
+  suitcase:
+    dims: [0.45, 0.70, 0.25]
+    height: 0.70
+    grounded: false
+    weight: 0.3
+  handbag:
+    dims: [0.35, 0.30, 0.15]
+    height: 0.30
+    grounded: false
+    weight: 0.2
+  umbrella:
+    dims: [0.90, 0.90, 0.90]
+    height: 0.90
+    grounded: false
+    weight: 0.2
+  traffic light:
+    dims: [0.30, 0.90, 0.30]
+    height: 0.90
+    grounded: false
+    weight: 0.3
+  stop sign:
+    dims: [0.75, 0.75, 0.05]
+    height: 0.75
+    grounded: false
+    weight: 0.2
+  chair:
+    dims: [0.55, 0.90, 0.55]
+    height: 0.90
+    grounded: true
+    weight: 0.4
+  bench:
+    dims: [1.60, 0.85, 0.60]
+    height: 0.85
+    grounded: true
+    weight: 0.3
+  dining table:
+    dims: [1.60, 0.75, 0.90]
+    height: 0.75
+    grounded: true
+    weight: 0.3
+  laptop:
+    dims: [0.35, 0.25, 0.25]
+    height: 0.25
+    grounded: false
+    weight: 0.2
+  bottle:
+    dims: [0.08, 0.30, 0.08]
+    height: 0.30
+    grounded: false
+    weight: 0.2
+  cup:
+    dims: [0.09, 0.12, 0.09]
+    height: 0.12
+    grounded: false
+    weight: 0.2
+  skateboard:
+    dims: [0.25, 0.15, 0.80]
+    height: 0.15
+    grounded: false
+    weight: 0.2
+  surfboard:
+    dims: [0.60, 0.20, 1.90]
+    height: 0.20
+    grounded: false
+    weight: 0.2
+  dog:
+    dims: [0.40, 0.55, 0.80]
+    height: 0.55
+    grounded: true
+    weight: 0.4
+  cat:
+    dims: [0.25, 0.30, 0.45]
+    height: 0.30
+    grounded: true
+    weight: 0.3
+  book:
+    dims: [0.15, 0.25, 0.05]
+    height: 0.25
+    grounded: false
+    weight: 0.2
+  cell phone:
+    dims: [0.07, 0.15, 0.01]
+    height: 0.15
+    grounded: false
+    weight: 0.2
+  teddy bear:
+    dims: [0.30, 0.40, 0.25]
+    height: 0.40
+    grounded: false
+    weight: 0.2

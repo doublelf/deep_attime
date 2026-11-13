@@ -1,0 +1,53 @@
+# Subject selection: which single object in the frame becomes the 3D target.
+#
+# score = w_area * A + w_center * C + w_conf * F + w_class * K
+#   A = sqrt(bbox_area / image_area)      -> size, square-rooted so that a huge
+#                                           object does not swamp the score
+#   C = 1 - clip(||bbox_center - image_center|| / image_diagonal, 0, 1)
+#   F = detection confidence
+#   K = class weight from config/priors.yaml
+#
+# Presets only override the four weights; the thresholds below always apply.
+
+weights:
+  area: 1.0
+  center: 0.6
+  confidence: 0.8
+  class: 0.4
+
+presets:
+  generic:
+    area: 1.0
+    center: 0.6
+    confidence: 0.8
+    class: 0.4
+  # Camera follows the action: prefer people, tolerate a smaller object that
+  # sits closer to the centre of the frame.
+  football:
+    area: 0.8
+    center: 0.4
+    confidence: 0.7
+    class: 0.8
+  # Nearest, most central vehicle.
+  road:
+    area: 1.2
+    center: 0.8
+    confidence: 0.9
+    class: 0.5
+
+# Detections smaller than this fraction of the image are dropped before
+# scoring (they are too small for a reliable monocular depth).
+min_area_ratio: 0.003
+
+# Number of subjects reported per frame.
+max_subjects: 1
+
+tracker:
+  # Minimum IoU between the locked box and a detection to count as a match.
+  iou_threshold: 0.3
+  # Maximum normalised centre distance for a match (0 disables the test).
+  center_distance_ratio: 0.25
+  # Exponential moving average factor applied to the matched box.
+  ema: 0.6
+  # Number of consecutive frames without a match before the lock is released.
+  max_lost_frames: 10

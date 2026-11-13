@@ -1,0 +1,23 @@
+# Pinhole profile for the 1920x1080 demo video
+#   D:\Desktop\chat\opencode\project\poseball_RKNN\测试视频\sample-a.mp4
+#
+# !! WARNING: ASSUMED values.  The intrinsics of that camera are unknown, so
+#    they are derived from an assumed horizontal field of view:
+#        fx = W / (2 * tan(HFOV / 2)) = 1920 / (2 * tan(35 deg)) = 1371.1
+#    VFOV then follows from the aspect ratio (43.0 deg).
+#    If you know the real focal length, edit `fx`/`fy`/`cx`/`cy` here, or run
+#    scripts/calibrate_fisheye.py / a plain cv2.calibrateCamera pass.
+#
+# Set `camera_height` (metres) in the CLI to match the real rig; the ground
+# plane model needs it to turn pixels into metres.
+
+model: pinhole
+width: 1920
+height: 1080
+fx: 1371.1
+fy: 1371.1
+cx: 960.0
+cy: 540.0
+hfov_deg: 70.0
+vfov_deg: 43.0
+assumed: true
